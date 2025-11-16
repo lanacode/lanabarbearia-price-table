@@ -1,0 +1,164 @@
+/* Definição da cor de destaque ROSA */
+:root {
+    --highlight-color: #d80085; 
+    --text-color: #333;
+    --bg-color: #fff1fb; /* Rosa bem clarinho para o fundo */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    padding: 40px 20px;
+    margin: 0;
+}
+
+/* ============================================== */
+/* ESTILO DO CABEÇALHO (NOVO)           */
+/* ============================================== */
+.cabecalho {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.cabecalho img {
+    max-width: 400px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
+}
+
+/* Adicione isso ao seu styles.css */
+h2 {
+    text-align: start;
+    color: var(--text-color); /* Cor escura padrão */
+    margin: 30px 20px; /* Espaçamento: 60px acima, 20px abaixo */
+    margin-left: 300px;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--highlight-color);
+    width: fit-content;
+    padding-bottom: 5px;
+}
+
+.pricing-table {
+    display: grid; 
+    /* Define 5 colunas de largura igual (1 fração cada) */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; /* Espaço entre os cartões */
+    max-width: 1300px; /* Limita largura para não esticar demais em telas grandes */
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent; /* Borda transparente inicial */
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Destaque ao passar o mouse */
+.pricing-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Leve movimento para cima e escala */
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4); /* Sombra rosa suave */
+    border-color: var(--highlight-color); /* Borda rosa */
+}
+
+.title {
+    color: var(--highlight-color);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.price, .price-start {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.price span, .price-start span {
+    font-size: 0.6em;
+    font-weight: normal;
+    color: #777;
+    margin-left: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 20px;
+}
+
+li {
+    padding: 8px 0;
+    color: var(--text-color);
+    font-size: 0.9em;
+    /* Adiciona um pequeno ícone de check (simulado) */
+    position: relative;
+    padding-left: 20px;
+}
+
+li::before {
+    content: '★'; /* Usando um caractere simples como marcador */
+    color: var(--highlight-color);
+    position: absolute;
+    left: 0;
+    font-size: 0.8em;
+    line-height: 1.2;
+}
+
+/* ============================================== */
+/* MEDIA QUERIES (RESPONSIVIDADE)        */
+/* ============================================== */
+
+/* ------------------------------------- */
+/* 1. Tablet Grande / Notebook (Até 1300px) */
+/* Reduz de 5 para 4 colunas para não apertar */
+/* ------------------------------------- */
+@media (max-width: 1300px) {
+    .pricing-table {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+}
+
+/* ------------------------------------- */
+/* 2. Tablet Padrão (Até 1024px) */
+/* Reduz para 3 colunas */
+/* ------------------------------------- */
+@media (max-width: 1024px) {
+    .pricing-table {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .pricing-card {
+        padding: 15px; /* Reduz o padding para ganhar espaço */
+    }
+}
+
+/* ------------------------------------- */
+/* 3. Celular (Até 600px) */
+/* Reduz para 1 coluna (visualização em lista) */
+/* ------------------------------------- */
+@media (max-width: 600px) {
+    .pricing-table {
+        /* Garante que o grid só tenha uma coluna */
+        grid-template-columns: 1fr; 
+        max-width: 90%; /* Centraliza o conteúdo */
+    }
+    
+    .pricing-card:hover {
+        /* Desativa o efeito 3D (transform: scale) no celular para melhor performance */
+        transform: translateY(-2px); 
+    }
+    
+    /* Ajusta tamanho da fonte e margens em dispositivos menores */
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        margin: 40px auto 15px auto;
+    }
+}
